@@ -39,7 +39,9 @@ public class TokenApplication {
         new TokenApplication().run(nodeA, nodeB, nodeC, nodeZ);
     }
 
-    public static Node createAndUnlockAccount(String name, String url, String publicKey) throws Exception {
+    public static Node createAndUnlockAccount(
+            String name, String url, String publicKey) throws Exception {
+
         Admin admin = Admin.build(new HttpService(url));
         String password = createPassword(16);
         NewAccountIdentifier accountId = admin.personalNewAccount(password).send();
