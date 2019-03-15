@@ -1,11 +1,11 @@
-# Quorum Token Sample
+# Quorum Token Java Sample
 
 This project demonstrates the creation and management of a private token on a Quorum network.
  
-Quorum privacy is also used - only certain members of the network are privy to the 
+Quorum privacy is used, only certain members of the network are privy to the 
 token that has been created.
 
-It is written in Java using [web3j](https://web3j.io) behind the scenes which is maintained by 
+It is written in Java using [web3j](https://web3j.io) which is maintained by 
 [Web3 Labs](https://www.web3labs.com).
 
 
