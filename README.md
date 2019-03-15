@@ -80,7 +80,7 @@ which is logged as follows:
 19:53:10.853 [main] INFO  c.w.quorum.token.TokenApplication - Quorum Token (QT) created at contract address 0x<contract-address>, by account 0x<creation-account>
 ```
 
-You can view the contract itself via the url http://localhost:5000/contract/0x`<contract-address>`:
+You can view the contract itself via the url `http://localhost:5000/contract/0x<contract-address>`:
 
 ![Contract](images/contract.png)
 
