@@ -6,13 +6,17 @@ deployment.
 It demonstrates the creation and management of a private token on a Quorum network, where only 
 certain members are privy to the token that has been created.
 
+It uses [web3j](https://web3j.io) behind the scenes which is maintained by 
+[Web3 Labs](https://www.web3labs.com).
+
+
 ## Prerequisites
 
 A Quorum network running with at least 4 transaction nodes.
 
 You will need the following details for each node:
-- Node URL, http://<node-url>:<node-port>
-- Transaction enclave address, <base64 encoded public key>
+- Node URL, http://\<node-url>:<node-port>
+- Transaction enclave address, \<base64 encoded public key>
 
 ## Running the application
 
@@ -76,18 +80,18 @@ which is logged as follows:
 19:53:10.853 [main] INFO  c.w.quorum.token.TokenApplication - Quorum Token (QT) created at contract address 0x<contract-address>, by account 0x<creation-account>
 ```
 
-You can view the contract itself via the url http://localhost:5000/contract/0x<contract-address>.
+You can view the contract itself via the url http://localhost:5000/contract/0x\<contract-address>:
 
 ![Contract](images/contract.png)
 
-From here you can view the private transactions.
+You can also view the private transactions:
 
 ![Private transactions](images/transactions.png)
 
-And the transaction details.
+And details of those transactions:
 
 ![Transaction details](images/transaction.png)
 
-If you wish to learn more about our blockchain explorer, including our SaaS and 
-production ready offerings which include features such as authentication, 
-please [contact us](mailto:hi@web3labs.com) to learn more.
+If you wish to learn more about our Epirus contract registry and blockchain explorer, 
+including our production-ready SaaS offerings which include features such as authentication 
+and BI integrations please [contact us](mailto:hi@web3labs.com).
