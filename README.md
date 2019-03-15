@@ -21,7 +21,7 @@ You will need the following details for each node:
 ## Running the application
 
 You will need to update the 
-[TokenApplication](tree/master/src/main/java/com/web3labs/quorum/token/TokenApplication.java) 
+[TokenApplication](blob/master/src/main/java/com/web3labs/quorum/token/TokenApplication.java) 
 class with details of the URL for each of your transaction nodes and their associated public keys.
 
 ```java
@@ -55,7 +55,7 @@ The application logs the different activities it completes, which are as follows
 1. Display all account balances.
 
 There are also a couple of 
-[integration tests](tree/master/src/test/java/com/web3labs/quorum/token/TokenApplicationIT.java) 
+[integration tests](blob/master/src/test/java/com/web3labs/quorum/token/TokenApplicationIT.java) 
 you can use to test the application.
 
 ## Viewing contracts and transactions
