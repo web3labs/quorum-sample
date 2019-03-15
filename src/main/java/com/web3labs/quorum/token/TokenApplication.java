@@ -73,7 +73,6 @@ public class TokenApplication {
             transferToken(token, nodeZ.getAddress(), 50_000);
 
             logBalances(token, nodeA, nodeB, nodeC, nodeZ);
-            log.info("\n");
 
             // Although Node Z has been allocated tokens, it cannot see this as it is not privy to
             // the underlying smart contract - it wasn't included as a participant
