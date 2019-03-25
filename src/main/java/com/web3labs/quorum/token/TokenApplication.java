@@ -79,10 +79,11 @@ public class TokenApplication {
             // Although Node Z has been allocated tokens, it cannot see this as it is not privy to
             // the underlying smart contract - it wasn't included as a participant
             try {
+                log.info("Getting token balances from nodeZ ({})", nodeZ.getUrl());
                 getBalanceByNode(token.getContractAddress(), nodeZ);
                 throw new Exception("It should not be possible for nodeZ to see it's balance");
             } catch (ContractCallException e) {
-                log.info("NodeZ unable to view its balance as not included in " +
+                log.info("Exception: NodeZ unable to view its balance as not included in " +
                         "token contract creation\n");
             }
 
@@ -107,6 +108,7 @@ public class TokenApplication {
 
     private void logBalances(
             Token token, Node nodeA, Node nodeB, Node nodeC, Node nodeZ) throws Exception {
+        log.info("Getting token balances from nodeA ({})", nodeA.getUrl());
         log.info("NodeA balance: {}", token.balanceOf(nodeA.getAddress()).send().longValue());
         log.info("NodeB balance: {}", token.balanceOf(nodeB.getAddress()).send().longValue());
         log.info("NodeC balance: {}", token.balanceOf(nodeC.getAddress()).send().longValue());

@@ -43,11 +43,11 @@ Then to run the application, simply type:
 
 The application logs the different activities it completes, which are as follows:
 
-1. Create an Ethereum account on nodes A, B, C and D.
-1. Deploy a Quorum Token (symbol QT) contract that is visible only to nodes A, B and C, but not D.
-1. Transfer QT to accounts associated with nodes A, B, C, D.
+1. Create an Ethereum account on nodes A, B, C and Z.
+1. Deploy a Quorum Token (symbol QT) contract that is visible only to nodes A, B and C, but not Z.
+1. Transfer QT to accounts associated with nodes A, B, C, Z.
 1. Display all account balances.
-1. Demonstrate that node D cannot see the QT assigned to its account.
+1. Demonstrate that node Z cannot see the QT assigned to its account.
 1. Increase the supply of QT.
 1. Display all account balances.
 1. Decrease the supply of QT.
