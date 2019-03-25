@@ -90,7 +90,7 @@ public class TokenApplication {
             // Mint additional tokens
             long mintQty = 500_000;
             log.info("Increasing available supply by {}", mintQty);
-            increaseTokenSupply(token, 250_000, nodeA.getAddress());
+            increaseTokenSupply(token, mintQty, nodeA.getAddress());
 
             logBalances(token, nodeA, nodeB, nodeC, nodeZ);
 
