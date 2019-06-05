@@ -63,12 +63,12 @@ The Web3 Labs blockchain explorer provides an easy to use UI for browsing transa
 and contract details.
 
 ```bash
-git clone https://github.com/blk-io/blk-explorer-free.git
-cd blk-explorer-free
+git clone https://github.com/blk-io/epirus-free.git
+cd epirus-free
 NODE_ENDPOINT=http://<node-url> docker-compose up
 ```
 
-You may access the blockchain explorer via http://localhost:5000.
+You may access the blockchain explorer via http://localhost.
 
 ![Latest blocks](images/blocks.png)
 
