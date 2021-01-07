@@ -31,12 +31,11 @@ public class TokenApplication {
 
     public static void main(String[] args) throws Exception {
         // FIXME: Add node URL and transaction node keys here
-        Node nodeA = createAndUnlockAccount("nodeA", "http://<node-url>", "<transaction node key>");
-        Node nodeB = createAndUnlockAccount("nodeB", "http://<node-url>", "<transaction node key>");
-        Node nodeC = createAndUnlockAccount("nodeC", "http://<node-url>", "<transaction node key>");
-        Node nodeZ = createAndUnlockAccount("nodeZ", "http://<node-url>", "<transaction node key>");
+        Node nodeA = createAndUnlockAccount("nodeA", "http://163.172.171.177:20000", "BULeR8JyUWhiuuCMU/HLA0Q5pzkYT+cHII3ZKBey3Bo=");
+        Node nodeB = createAndUnlockAccount("nodeB", "http://163.172.171.177:20002", "QfeDAys9MPDs2XHExtc84jKGHxZg/aj52DTh0vtA3Xc=");
+        Node nodeZ = createAndUnlockAccount("nodeZ", "http://163.172.171.177:20004", "1iTZde/ndBHvzhcl7V68x44Vx7pl8nwx9LqnM/AfJUg=");
 
-        new TokenApplication().run(nodeA, nodeB, nodeC, nodeZ);
+        new TokenApplication().run(nodeA, nodeB, nodeZ);
     }
 
     public static Node createAndUnlockAccount(
@@ -56,25 +55,28 @@ public class TokenApplication {
         return new Node(accountId.getAccountId(), Collections.singletonList(publicKey), url);
     }
 
-    public void run(Node nodeA, Node nodeB, Node nodeC, Node nodeZ) {
+    public void run(Node nodeA, Node nodeB, Node nodeZ) {
 
         try {
             String tokenName = "Quorum Token";
             String tokenSymbol = "QT";
 
-            // Create token that is private to nodes A, B, C
-            Token token = createToken(tokenName, tokenSymbol, 8, nodeA, nodeB, nodeC);
+            // Create token that is private to nodes A, B
+            Token token = createToken(tokenName, tokenSymbol, 8, nodeA, nodeB);
 
             log.info(
                     "{} ({}) created at contract address {}, by account {}\n",
                     tokenName, tokenSymbol, token.getContractAddress(), nodeA.getAddress());
 
-            // Allocate tokens to nodes B, C and Z
+            logSupply(token);
+
+            logBalances(token, nodeA, nodeB, nodeZ);
+
+            // Allocate tokens to nodes B and Z
             transferToken(token, nodeB.getAddress(), 100_000);
-            transferToken(token, nodeC.getAddress(), 100_000);
             transferToken(token, nodeZ.getAddress(), 50_000);
 
-            logBalances(token, nodeA, nodeB, nodeC, nodeZ);
+            logBalances(token, nodeA, nodeB, nodeZ);
 
             // Although Node Z has been allocated tokens, it cannot see this as it is not privy to
             // the underlying smart contract - it wasn't included as a participant
@@ -87,19 +89,12 @@ public class TokenApplication {
                         "token contract creation\n");
             }
 
-            // Mint additional tokens
-            long mintQty = 500_000;
-            log.info("Increasing available supply by {}", mintQty);
-            increaseTokenSupply(token, mintQty, nodeA.getAddress());
-
-            logBalances(token, nodeA, nodeB, nodeC, nodeZ);
-
             // Burn tokens
             long burnQty = 499_999;
             log.info("Decreasing available supply by {}", burnQty);
             decreaseTokenSupply(token, burnQty);
 
-            logBalances(token, nodeA, nodeB, nodeC, nodeZ);
+            logBalances(token, nodeA, nodeB, nodeZ);
 
         } catch (Exception e) {
             log.error("Error performing operation", e);
@@ -107,11 +102,10 @@ public class TokenApplication {
     }
 
     private void logBalances(
-            Token token, Node nodeA, Node nodeB, Node nodeC, Node nodeZ) throws Exception {
+            Token token, Node nodeA, Node nodeB, Node nodeZ) throws Exception {
         log.info("Getting token balances from nodeA ({})", nodeA.getUrl());
         log.info("NodeA balance: {}", token.balanceOf(nodeA.getAddress()).send().longValue());
         log.info("NodeB balance: {}", token.balanceOf(nodeB.getAddress()).send().longValue());
-        log.info("NodeC balance: {}", token.balanceOf(nodeC.getAddress()).send().longValue());
         log.info("NodeZ balance: {}\n", token.balanceOf(nodeZ.getAddress()).send().longValue());
     }
 
@@ -138,14 +132,6 @@ public class TokenApplication {
 
         return token.transfer(
                 destinationAddress, BigInteger.valueOf(value))
-                .send();
-    }
-
-    public TransactionReceipt increaseTokenSupply(
-            Token token, long quantity, String destinationAddress) throws Exception {
-
-        return token.mint(
-                destinationAddress, BigInteger.valueOf(quantity))
                 .send();
     }
 
@@ -186,7 +172,7 @@ public class TokenApplication {
     // Simple account password generator
     private static final String CHARS =
             "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!+<>[]%,(){}.&@^?*$-";
-    private static SecureRandom RND = new SecureRandom();
+    private static final SecureRandom RND = new SecureRandom();
 
     private static String createPassword(int length){
         StringBuilder sb = new StringBuilder(length);

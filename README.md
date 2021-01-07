@@ -11,7 +11,7 @@ It is written in Java using [web3j](https://web3j.io) which is maintained by
 
 ## Prerequisites
 
-A Quorum network running with at least 4 transaction nodes.
+A Quorum network running with at least 3 transaction nodes.
 
 You will need the following details for each node:
 - Node URL, `http://<node-url>:<node-port>`
@@ -27,7 +27,6 @@ class with details of the URL for each of your transaction nodes and their assoc
 // FIXME: Add node URL and transaction node keys here
 Node nodeA = createAndUnlockAccount("nodeA", "http://<node-url>", "<transaction node key>");
 Node nodeB = createAndUnlockAccount("nodeB", "http://<node-url>", "<transaction node key>");
-Node nodeC = createAndUnlockAccount("nodeC", "http://<node-url>", "<transaction node key>");
 Node nodeZ = createAndUnlockAccount("nodeZ", "http://<node-url>", "<transaction node key>");
 ```
 
@@ -43,13 +42,11 @@ Then to run the application, simply type:
 
 The application logs the different activities it completes, which are as follows:
 
-1. Create an Ethereum account on nodes A, B, C and Z.
-1. Deploy a Quorum Token (symbol QT) contract that is visible only to nodes A, B and C, but not Z.
-1. Transfer QT to accounts associated with nodes A, B, C, Z.
+1. Create an Ethereum account on nodes A, B and Z.
+1. Deploy a Quorum Token (symbol QT) contract that is visible only to nodes A, and B but not Z.
+1. Transfer QT to accounts associated with nodes A, B, Z.
 1. Display all account balances.
 1. Demonstrate that node Z cannot see the QT assigned to its account.
-1. Increase the supply of QT.
-1. Display all account balances.
 1. Decrease the supply of QT.
 1. Display all account balances.
 
