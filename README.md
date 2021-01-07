@@ -11,11 +11,16 @@ It is written in Java using [web3j](https://web3j.io) which is maintained by
 
 ## Prerequisites
 
-A Quorum network running with at least 3 transaction nodes.
+A Quorum network running with at least 3 transaction nodes. Check next section for an example of a ready to use network.
 
 You will need the following details for each node:
 - Node URL, `http://<node-url>:<node-port>`
 - Transaction enclave address, `<base64 encoded public key>`
+
+## Quorum-dev-quickstart
+
+As an example of a Quorum network that can be used with this sample project, we have the [Quorum-dev-quickstart](https://docs.goquorum.consensys.net/en/stable/Tutorials/Quorum-Dev-Quickstart/).
+This, will spin up a network of 3 members with their private transactions managers and will let you demo privacy groups and how they work.
 
 ## Running the application
 
