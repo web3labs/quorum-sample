@@ -1,11 +1,11 @@
 plugins {
     id 'java'
-    id 'org.web3j' version '4.8.2'
+    id 'org.web3j' version '4.8.3'
     id 'application'
 }
 
 ext {
-    web3jQuorumVersion = '4.8.2'
+    web3jQuorumVersion = '4.8.3'
     logbackVersion = '1.2.3'
 
     //test dependencies
