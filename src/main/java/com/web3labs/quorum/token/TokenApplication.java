@@ -31,9 +31,9 @@ public class TokenApplication {
 
     public static void main(String[] args) throws Exception {
         // FIXME: Add node URL and transaction node keys here
-        Node nodeA = createAndUnlockAccount("nodeA", "http://163.172.171.177:20000", "BULeR8JyUWhiuuCMU/HLA0Q5pzkYT+cHII3ZKBey3Bo=");
-        Node nodeB = createAndUnlockAccount("nodeB", "http://163.172.171.177:20002", "QfeDAys9MPDs2XHExtc84jKGHxZg/aj52DTh0vtA3Xc=");
-        Node nodeZ = createAndUnlockAccount("nodeZ", "http://163.172.171.177:20004", "1iTZde/ndBHvzhcl7V68x44Vx7pl8nwx9LqnM/AfJUg=");
+        Node nodeA = createAndUnlockAccount("nodeA", "http://<node-url>", "<transaction node key>");
+        Node nodeB = createAndUnlockAccount("nodeB", "http://<node-url>", "<transaction node key>");
+        Node nodeZ = createAndUnlockAccount("nodeZ", "http://<node-url>", "<transaction node key>");
 
         new TokenApplication().run(nodeA, nodeB, nodeZ);
     }
